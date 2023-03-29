@@ -1,12 +1,13 @@
-import { NavHeader } from './components/NavHeader'
-import { Routess } from './routes'
+import { AppContexts } from "./context";
+import { Routess } from "./routes";
 function App() {
-
   return (
     <>
-      <Routess/>
+      <AppContexts>
+        <Routess />
+      </AppContexts>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
