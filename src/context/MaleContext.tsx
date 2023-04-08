@@ -1,24 +1,16 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useContext,
-  useState,
-} from "react";
-
+import React, { createContext, useContext, useState } from "react";
 import { key } from "../common/api";
 import { IJordan } from "../interfaces/IJordan";
 
 type Props = {
   children: React.ReactNode;
 };
-
 interface maleContext {
   getJordanShoes: () => IJordan[];
   jordanShoes: IJordan[];
 }
 
-export const MaleContext = createContext({} as maleContext);
+const MaleContext = createContext({} as maleContext);
 MaleContext.displayName = "MaleContext";
 
 export function MaleContextProvider({ children }: Props) {
@@ -27,7 +19,7 @@ export function MaleContextProvider({ children }: Props) {
   function getJordanShoes() {
     try {
       const { data }: IJordan[] | any = key
-        .get("jordan")
+        .get("dunk")
         .then((res) => setJordanShoes(res.data))
         .catch((error) => console.log(error));
     } catch (error) {
