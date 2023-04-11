@@ -46,7 +46,7 @@ export function SideCart() {
             </div>
             {/* Shoes */}
 
-            <div className="flex flex-col items-center w-full">
+            <div className="flex flex-col items-center w-full h-[calc(100vh-20rem)] overflow-auto">
               {cart?.map((shoe) => (
                 <div
                   key={shoe.id}
