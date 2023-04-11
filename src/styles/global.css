@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-text-base: #fafafa;
+    --color--text-button-header: #9ca3af;
+    --color-bg-card: #f3f4f6;
+    --color-circle-card: ##d1d5db;
+  }
+}
