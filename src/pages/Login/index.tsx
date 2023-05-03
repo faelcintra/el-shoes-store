@@ -1,71 +1,61 @@
-import JordanImg from "../../assets/logo.png";
-import Logo from "../../assets/logoB.png";
+import { useEffect } from "react";
+import ReactLoading from "react-loading";
+
 import { Button } from "../../components/Button";
+import { FormUser } from "../../components/FormUser";
 import { Input } from "../../components/Input";
+import { InputCheck } from "../../components/InputCheck";
 import { useAuthContext } from "../../context/AuthContext";
 
 export function Login() {
-  const { register, handleSubmit, errors } = useAuthContext();
-  const handleForm = (data: any) => {
-    console.log("data?", errors);
-  };
+  const {
+    register,
+    reset,
+    getValues,
+    handleSubmit,
+    errors,
+    loginUser,
+    user,
+    setIsLoginForm,
+    isLoading,
+  } = useAuthContext();
+
+  useEffect(() => {
+    setIsLoginForm(true);
+    reset();
+  }, [user]);
+
   return (
-    <section className="flex w-screen h-screen justify-center">
-      <article className="">
-        <div className="bg-white p-4 lg:w-[calc(100vw-70vw)]">
-          {/* LOGO  */}
-          <div className="flex flex-col w-full text-center items-center">
-            <img src={Logo} className="w-28 h-28" />
-            <h1>Cadastre-se para ficar por dentro de todas as novidades!</h1>
-          </div>
-          {/* INPUTS */}
-          <form onSubmit={handleSubmit(handleForm)}>
-            <Input
-              placeholder="Nome"
-              register={register}
-              fieldName={"name"}
-              errors={errors}
-            />
-            <Input
-              placeholder="Sobrenome"
-              register={register}
-              fieldName={"surname"}
-              errors={errors}
-            />
-            <Input
-              placeholder="Data de Nascimento"
-              register={register}
-              fieldName={"birthDate"}
-              errors={errors}
-            />
-            <Input
-              placeholder="Email"
-              register={register}
-              fieldName={"email"}
-              errors={errors}
-            />
-            <Input
-              placeholder="Senha"
-              register={register}
-              fieldName={"password"}
-              errors={errors}
-            />
-            <Input
-              placeholder="Confirme sua senha"
-              register={register}
-              fieldName={"confirmPassword"}
-              errors={errors}
-            />
-            <div className="flex w-full justify-between">
-              <Button children={"Masculino"} />
-              <Button children={"Feminino"} />
-            </div>
-            <div>
-              <Button variant children={"teste"} />
-            </div>
-          </form>
+    <FormUser isLoading={isLoading} description="Faça o login para continuar.">
+      {isLoading && (
+        <div className="z-20 h-72 right-0 opacity-100 top-28  w-full absolute flex items-center justify-center">
+          <ReactLoading
+            type="spin"
+            width={"15%"}
+            height={"15%"}
+            color="black"
+          />
         </div>
-      </article>
-    </section>
+      )}
+      <Input
+        fieldName="emailLogin"
+        placeholder="Email"
+        register={register}
+        errors={errors}
+      />
+      <Input
+        fieldName="passwordLogin"
+        placeholder="Senha"
+        register={register}
+        errors={errors}
+      />
+      {/* <InputCheck
+          register={register}
+          label="Mantenha-me conectado"
+          fieldName={"registered"}
+          errors={errors}
+        /> */}
+      <Button children={"Entrar"} variant onClick={handleSubmit(loginUser)} />
+    </FormUser>
   );
 }

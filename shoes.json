@@ -3,48 +3,117 @@
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/1.png",
-      "id": "1"
+      "id": 1
     },
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/2.png",
-      "id": "2"
+      "id": 2
     },
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/3.png",
-      "id": "3"
+      "id": 3
     },
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/4.png",
-      "id": "4"
+      "id": 4
     },
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/5.png",
-      "id": "5"
+      "id": 5
     },
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/6.png",
-      "id": "6"
+      "id": 6
     },
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/7.png",
-      "id": "7"
+      "id": 7
     },
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/8.png",
-      "id": "8"
+      "id": 8
     },
     {
       "name": "Air Jordan",
       "img": "/assets/jordan/9.png",
-      "id": "9"
+      "id": 9
     }
   ],
-  "dunk": []
+  "dunk": [
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/1.png",
+      "color": "green",
+      "id": 1
+    },
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/2.png",
+      "color": "green",
+      "colorB": "blue",
+      "id": 2
+    },
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/3.png",
+      "color": "blue",
+      "id": 3
+    },
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/4.png",
+      "color": "blue",
+      "colorB": "black",
+      "pair": [
+        "black",
+        "blue"
+      ],
+      "id": 4
+    },
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/5.png",
+      "color": "purple",
+      "id": 5
+    },
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/6.png",
+      "color": "red",
+      "id": 6,
+      "colorB": "green"
+    },
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/7.png",
+      "color": "green",
+      "colorB": "red",
+      "id": 7
+    },
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/8.png",
+      "color": "black",
+      "id": 8
+    },
+    {
+      "name": "Dunk",
+      "img": "/assets/dunk/9.png",
+      "color": "pink",
+      "id": 9
+    }
+  ],
+  "user": {
+    "name": "Caio",
+    "surname": "Valdo",
+    "email": "rafaacintramartins@gmail.com",
+    "password": "aaaa@aaaa"
+  }
 }

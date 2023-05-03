@@ -5,4 +5,7 @@ export interface IAuth {
   birthDate: Date;
   password: string;
   confirmPassword: string;
+  registered: boolean;
+  emailLogin: string;
+  passwordLogin: string;
 }
