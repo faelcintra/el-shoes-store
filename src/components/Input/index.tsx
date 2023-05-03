@@ -1,30 +1,52 @@
-import { IAuth } from "../../interfaces/IAuth";
-import { FieldErrors } from "react-hook-form/dist/types";
+import { useState } from "react";
+import { AiOutlineEdit } from "react-icons/ai";
+import ClassNames from "classnames";
 
-type InputProps = {
-  placeholder: string;
-  onChange?: () => void;
-  fieldName: keyof IAuth;
-  register: (fieldName: string) => {};
-  errors?: FieldErrors<IAuth>;
-};
+import { InputProps } from "../../interfaces/IInput";
 
 export function Input({
   placeholder,
+  label,
+  value,
+  edit,
   onChange,
   register,
   fieldName,
   errors,
+  type,
 }: InputProps) {
+  const [isEdit, setIsEdit] = useState(true);
+  console.log("is edit", isEdit);
+
   return (
-    <div>
-      <input
-        placeholder={placeholder}
-        onChange={onChange}
-        {...register(fieldName)}
-        className="border-[calc(1px)] mb-4 focus:border-gray-900 pl-2 focus:placeholder:text-gray-300 outline-none border-gray-200 bg-white rounded-sm py-2 w-full "
-      />
-      {errors?.[fieldName]?.message}
+    <div className={`mb-4 flex items-end w-full`}>
+      <div className="w-full">
+        <label children={label} className="w-36" />
+        <input
+          disabled={isEdit}
+          defaultValue={value}
+          onChange={onChange}
+          type={type}
+          placeholder={placeholder}
+          {...register(fieldName)}
+          className={ClassNames(
+            "border-[calc(1px)] w-full focus:border-b-gray-900 pl-2 focus:placeholder:text-gray-300 outline-none border-gray-200 rounded-sm py-2",
+            {
+              "border-b-red-500 focus:border-b-red-500 focus:border-gray-200":
+                !!errors?.[fieldName]?.message,
+              "bg-gray-100": !!isEdit,
+            }
+          )}
+        />
+      </div>
+      {edit && (
+        <button onClick={() => setIsEdit((state) => !state)}>
+          <AiOutlineEdit size={24} className="ml-2" />
+        </button>
+      )}
+      <span className="text-red-500 text-sm">
+        {errors?.[fieldName]?.message}
+      </span>
     </div>
   );
 }

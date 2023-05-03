@@ -3,9 +3,7 @@ import { Routess } from "./routes";
 function App() {
   return (
     <>
-      <AppContexts>
         <Routess />
-      </AppContexts>
     </>
   );
 }
