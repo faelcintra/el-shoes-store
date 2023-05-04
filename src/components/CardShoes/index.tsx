@@ -2,10 +2,10 @@ import { BsHandbag, BsHeart, BsFillBagPlusFill } from "react-icons/bs";
 import { TbSquareMinus, TbSquarePlus } from "react-icons/tb";
 import { IJordan } from "../../interfaces/IJordan";
 import { useState } from "react";
-import { useMaleContext } from "../../context/MaleContext";
 import { useShoppingContext } from "../../context/ShoppingContext";
-import { Button } from "../Button";
 import { ButtonQuantity } from "../ButtonQuantity";
+import { FiShoppingBag } from "react-icons/fi";
+import classNames from "classnames";
 
 type Props = {
   shoe: IJordan;
@@ -46,11 +46,15 @@ export function CardShoes({ shoe, inCart }: Props) {
                   <TbSquareMinus size={24} />
                 </ButtonQuantity>
                 {shoe.quantity}
-                <TbSquarePlus
-                  size={24}
-                  className="bg-emerald-500 cursor-pointer"
+                <ButtonQuantity
                   onClick={() => updateQuantity(shoe.id, 1)}
-                />
+                  onDisabled={shoe.quantity === 0}
+                >
+                  <TbSquarePlus
+                    size={24}
+                    className="bg-emerald-500 cursor-pointer"
+                  />
+                </ButtonQuantity>
               </div>
             ) : (
               <button
@@ -58,11 +62,14 @@ export function CardShoes({ shoe, inCart }: Props) {
                   addShoes(shoe);
                   setCarBg((state) => !state);
                 }}
-                className={`w-12 flex justify-center items-center rounded-lg border-2 ${
-                  shoeInCart ? "bg-sky-400 border-none" : "bg-transparent"
-                } border-gray-100 h-10`}
+                className={classNames(
+                  "w-12 bg-transparent flex justify-center items-center rounded-lg border-2 border-gray-100 h-10",
+                  {
+                    "bg-yellow-300 border-none": !!shoeInCart,
+                  }
+                )}
               >
-                <BsFillBagPlusFill size={30} />
+                <FiShoppingBag size={30} />
               </button>
             )}
           </div>

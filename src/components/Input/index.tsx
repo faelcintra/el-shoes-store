@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
-import ClassNames from "classnames";
+import classNames from "classnames";
 
 import { InputProps } from "../../interfaces/IInput";
 
@@ -19,7 +19,7 @@ export function Input({
   console.log("is edit", isEdit);
 
   return (
-    <div className={`mb-4 flex items-end w-full`}>
+    <div className="mb-4 flex items-end w-full">
       <div className="w-full">
         <label children={label} className="w-36" />
         <input
@@ -29,7 +29,7 @@ export function Input({
           type={type}
           placeholder={placeholder}
           {...register(fieldName)}
-          className={ClassNames(
+          className={classNames(
             "border-[calc(1px)] w-full focus:border-b-gray-900 pl-2 focus:placeholder:text-gray-300 outline-none border-gray-200 rounded-sm py-2",
             {
               "border-b-red-500 focus:border-b-red-500 focus:border-gray-200":
