@@ -1,4 +1,4 @@
-import { Route, Router, Routes } from "react-router";
+import { Route, Router, Routes, useLocation } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { NavHeader } from "../components/NavHeader";
 import Home from "../pages/Home";
@@ -7,10 +7,22 @@ import ShoppingCart from "../pages/ShoppingCart";
 import { SignUp } from "../pages/SignUp";
 import { Login } from "../pages/Login";
 import { AppContexts } from "../context";
+import { useEffect } from "react";
 
 export function Routess() {
+  const ScrollTop = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+    return null;
+  };
+
   return (
     <BrowserRouter>
+      <ScrollTop />
+
       <AppContexts>
         <Routes>
           <Route path="signup" element={<SignUp />} />
